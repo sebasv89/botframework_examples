@@ -1,0 +1,17 @@
+{
+  "name": "bot_tutorial",
+  "version": "1.0.0",
+  "description": "Examples of bot framework",
+  "main": "app4.js",
+  "dependencies": {
+    "botbuilder": "^3.8.4",
+    "restify": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "node app4.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

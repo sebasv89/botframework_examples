@@ -1,0 +1,25 @@
+var restify = require('restify');
+var builder = require('botbuilder');
+
+// Setup Restify Server
+var server = restify.createServer();
+server.listen(process.env.port || process.env.PORT || 3978, function () {
+   console.log('%s listening to %s', server.name, server.url); 
+});
+
+var connector = new builder.ChatConnector({
+    appId: process.env.MICROSOFT_APP_ID,
+    appPassword: process.env.MICROSOFT_APP_PASSWORD
+});
+
+server.post('/api/messages', connector.listen());
+
+var bot = new builder.UniversalBot(connector, [
+        function (session) {
+            builder.Prompts.choice(session, "Colo favorito?", "rojo|verde|azul");
+        },
+        function (session, results) {
+            builder.Prompts.attachment(session, "Dame una foto de algo " + results.response.entity);
+        }
+    ]
+);
