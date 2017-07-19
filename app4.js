@@ -24,7 +24,6 @@ dialog.matches("LogTimeToTask", [
 
         var taskID = builder.EntityRecognizer.findEntity(args.entities, 'TaskID');
         var timeToLog = builder.EntityRecognizer.findEntity(args.entities, 'TimeToLog');
-
         session.endDialog("Gracias! Hemos agregado " + timeToLog.entity + " horas a la tarea " + taskID.entity);
 
     }
@@ -34,6 +33,14 @@ dialog.matches("MyAssignedTasks", [
     function (session, args, next) {
 
         session.endDialog("Tus tareas son: AD3122, AM2121 y AP1223");
+
+    }
+]);
+
+dialog.matches("MyBugs", [
+    function (session, args, next) {
+
+        session.endDialog("Tus defectos son: AP1223");
 
     }
 ]);
